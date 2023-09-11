@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title>Rock Paper Scissors Game</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap-5.3.1-dist\css\bootstrap.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="task3.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Your score:<span id="uc"></span></h2>
+                </div>
+                <div class="col-md-7 offset"></div>
+                <div class="col-md-1">
+                    <h2>Opp Score: <span id="cc"></span></h2>
+                </div>
+            </div><br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="h1">Rock Paper Scissors</h1>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-1 offset"></div>
+                <div class="col-md-2">
+                    <img src="wrist.png" alt="image1" id="ro">
+                </div>
+                <div class="col-md-2 offset"></div>
+                <div class="col-md-2">
+                    <img src="open.png" alt="image2" id="pa">
+                </div>
+                <div class="col-md-2 offset"></div>
+                <div class="col-md-2">
+                    <img src="vic.png" alt="image3" id="sc">
+                </div>
+                <div class="col-md-1 offset"></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-1 offset"></div>
+                <div class="col-md-2">
+                    <button class="btn" id="rock" onclick="rock()">Rock</button>
+                </div>
+                <div class="col-md-2 offset"></div>
+                <div class="col-md-2">
+                    <button class="btn" id="paper" onclick="paper()">Paper</button>
+                </div>
+                <div class="col-md-2 offset"></div>
+                <div class="col-md-2">
+                   <button class="btn" id="scissor" onclick="scissor()">Scissors</button>
+                </div>
+                <div class="col-md-1 offset"></div>
+            </div>
+        </div>
+        <script>
+            let up=0;
+            let cp=0;
+        function rock(){
+            var i1=document.getElementById('ro');
+            i1.style.background='white';
+            play("rock");
+        }
+        function paper(){
+            var i2=document.getElementById('pa');
+            i2.style.background='white';
+            play("paper");
+        }
+        function scissor(){
+            var i3=document.getElementById('sc');
+            i3.style.background='white';
+            play("scissors");
+        }
+        function play(pchoice) {
+            const computer = cchoice();
+            const result = winner(pchoice, computer);
+            updateUI();
+        }
+        function cchoice() {
+            var a=document.getElementsByTagName('img');
+            const choices = ["rock", "paper", "scissors"];
+            const random = Math.floor(randomNumber(0,2));
+            for(var i=0;i<choices.length;i++){
+                if(a[i].alt==choices[random]){
+                    a[i].style.background="yellow";
+                }
+            }
+            return choices[random];
+        }
+        function randomNumber(min, max) {
+   		 return Math.random() * (max - min) + min;
+	    }
+        function winner(pchoice, cchoice) {
+            if (pchoice === cchoice) {
+               
+            } 
+            else if ((pchoice === "rock" && cchoice === "scissors") ||(pchoice === "paper" && cchoice === "rock") ||(pchoice === "scissors" && cchoice === "paper")) {
+                up++;
+                //return "You win!";
+            } 
+            else {
+                cp++;
+                //return "Computer wins!";
+            }
+        }
+        function updateUI(){
+            document.getElementById('uc').textContent=up;
+            document.getElementById('cc').textContent=cp;
+        }
+        </script>
+    </body>
+</html>

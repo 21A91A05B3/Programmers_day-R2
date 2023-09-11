@@ -1,0 +1,21 @@
+body{
+    background-color: lightcyan;
+}
+img{
+    height: 200px;
+    width: 200px;
+}
+#pics{
+    width: 100%;
+}
+#h1{
+    text-align: center;
+    font-size: 50px;
+    font-family: calibri;
+    font-weight: bold;
+}
+.btn{
+    width: 200px;
+    text-align: center;
+    border: 1px solid black;
+}
